@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {AppRegistry, StyleSheet, Text, View} from 'react-native';
+import {AppRegistry, StyleSheet, Text, View, Image, ImageBackground} from 'react-native';
 import { Header, Button } from 'react-native-elements';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
@@ -14,7 +14,7 @@ export default class Home extends Component {
           rightComponent={<MaterialIcons name="home" size={30} color="#fff"/>}
         />
         <View style={[styles.boxContainer,styles.boxOne]}>
-            <Text style={{color:'white'}}>Input Image Here</Text>
+            <Image source={require("./img/bkm.jpeg")}/>
         </View>
         <View style={[styles.boxContainer,styles.boxTwo]}>
             <Text style={{color:'white'}}>Text Goes Here</Text>
@@ -45,7 +45,6 @@ const styles = StyleSheet.create({
       backgroundColor:'black',
       justifyContent:'center',
       alignItems:'center',
-  
     },
     boxTwo: {
       flex:3,

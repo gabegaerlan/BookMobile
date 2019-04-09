@@ -4,6 +4,9 @@ import Home from './app/components/HomeComponent/Home.js';
 import Assets from './app/components/AssetsComponent/Assets.js';
 import Alerts from './app/components/AlertsComponent/Alerts.js';
 import Location from './app/components/LocationComponent/Location.js';
+import ImageHome from './app/components/ImageHomeComponent/ImageHome.js';
+
+
 
 
 
@@ -19,7 +22,8 @@ export default class App extends Component<Props> {
   render() {
     return (
       // <Alerts/>
-      <Location/>
+      // <Location/>
+      <ImageHome/>
       // <Home/>
       // <Assets/>
       // <View style={styles.container}>
