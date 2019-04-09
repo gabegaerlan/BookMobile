@@ -4,7 +4,7 @@ import { Header, Button } from 'react-native-elements';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 
-export default class Location extends Component {
+export default class Locations extends Component {
   render() {
     return (
       <View style={styles.container} >
@@ -63,5 +63,4 @@ const styles = StyleSheet.create({
     },
   });
 
-  AppRegistry.registerComponent('Home',() => Home);
 

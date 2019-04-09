@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import {AppRegistry, StyleSheet, Text, View, Image, ImageBackground} from 'react-native';
 import { Header, Button } from 'react-native-elements';
+import { createStackNavigator, createAppContainer } from 'react-navigation';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-
-export default class Home extends Component {
+export default class ImageHome extends Component {
   render() {
     return (
       <View style={styles.container} >
@@ -62,5 +62,5 @@ const styles = StyleSheet.create({
     },
   });
 
-  AppRegistry.registerComponent('Home',() => Home);
+  AppRegistry.registerComponent('ImageHome',() => ImageHome);
 

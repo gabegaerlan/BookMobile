@@ -1,10 +1,13 @@
 import React, {Component} from 'react';
-import {AppRegistry, StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import { Header, Button } from 'react-native-elements';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import { createStackNavigator, createAppContainer} from 'react-navigation';
+import Assets from './Assets';
+import Locations from './Locations';
+import Alerts from './Alerts';
 
-
-export default class Home extends Component {
+export class Home extends Component {
   render() {
     return (
       <View style={styles.container} >
@@ -14,21 +17,32 @@ export default class Home extends Component {
           rightComponent={<MaterialIcons name="home" size={30} color="#fff"/>}
         />
         <View style={[styles.boxContainer,styles.boxOne]}>
-            <Text style={{color:'white'}}>Input Image Here</Text>
+          <Image source={require("./img/bkm.jpeg")}/>
         </View>
         <View style={[styles.boxContainer,styles.boxTwo]}>
             <Text style={{color:'white'}}>Text Goes Here</Text>
         </View>
         <View style={[styles.boxContainer,styles.boxThree]}>
-            <Button type="clear" title="Main Menu"/>
-            <Button type="clear" title="Location"/>
-            <Button type="clear" title="Assets"/>
-            <Button type="clear" title="Alerts"/>
+            <Button type="clear" title="Main Menu" onPress={() => this.props.navigation.navigate('Home')}/>
+            <Button type="clear" title="Location" onPress={() => this.props.navigation.navigate('Locations')}/>
+            <Button type="clear" title="Assets" onPress={() => this.props.navigation.navigate('Assets')}/>
+            <Button type="clear" title="Alerts" onPress={() => this.props.navigation.navigate('Alerts')}/>
         </View>    
       </View>
     );
   }
 }
+
+const AppStackNavigator = createStackNavigator({
+  Home: Home,
+  Locations: Locations,
+  Assets: Assets,
+  Alerts: Alerts,
+});
+
+const AppContainer = createAppContainer(AppStackNavigator);
+
+export default AppContainer;
 
 const styles = StyleSheet.create({
     container: {
@@ -62,6 +76,3 @@ const styles = StyleSheet.create({
       alignItems:'center',
     },
   });
-
-  AppRegistry.registerComponent('Home',() => Home);
-
