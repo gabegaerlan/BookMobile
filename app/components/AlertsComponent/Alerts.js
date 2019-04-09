@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import {AppRegistry, Text, View, ListView, StyleSheet, TouchableHighlight} from 'react-native';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import { Header } from 'react-native-elements';
 
-export default class Alerts extends Component{
+export default class Assets extends Component{
     constructor(){
         super();
         const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
@@ -47,10 +49,17 @@ export default class Alerts extends Component{
 
     render(){
         return(
-        <ListView 
-            dataSource={this.state.userDataSource}
-            renderRow={this.renderRow.bind(this)}
-        />
+            <View>
+                <Header
+                    leftComponent={<MaterialIcons name="menu" size={30} color="#fff"/>}
+                    centerComponent={{ text:'BookMobile', style: { color:'#fff', fontSize:25, fontWeight:'bold'}}}
+                    rightComponent={<MaterialIcons name="home" size={30} color="#fff"/>}
+                />
+                <ListView 
+                    dataSource={this.state.userDataSource}
+                    renderRow={this.renderRow.bind(this)}
+                />
+            </View>
         );
     }
 }
