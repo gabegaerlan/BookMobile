@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {AppRegistry, Text, View, ListView, StyleSheet, TouchableHighlight} from 'react-native';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+// import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { Header } from 'react-native-elements';
 
 export default class Assets extends Component{
@@ -17,7 +17,7 @@ export default class Assets extends Component{
     }
 
     fetchUsers(){
-        fetch('https://infinite-forest-19330.herokuapp.com/api/all')
+        fetch('https://infinite-forest-19330.herokuapp.com/assets')
             .then((response) => response.json())
             .then((response) => {
                 this.setState({
@@ -49,11 +49,11 @@ export default class Assets extends Component{
 
     render(){
         return(
-            <View>
+            // Header code goes under View
+            <View style={{flex:1, backgroundColor:'#ddd'}}>
                 <Header
-                    leftComponent={<MaterialIcons name="menu" size={30} color="#fff"/>}
-                    centerComponent={{ text:'BookMobile', style: { color:'#fff', fontSize:25, fontWeight:'bold'}}}
-                    rightComponent={<MaterialIcons name="home" size={30} color="#fff"/>}
+                centerComponent={{ text:'BookMobile', style: { color:'#87db59', fontSize:25, fontWeight:'bold'} }}
+                containerStyle={{ backgroundColor: '#8f968b'}}
                 />
                 <ListView 
                     dataSource={this.state.userDataSource}

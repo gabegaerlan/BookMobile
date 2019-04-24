@@ -3,7 +3,7 @@ import {AppRegistry, Text, View, ListView, StyleSheet, TouchableHighlight} from 
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { Header } from 'react-native-elements';
 
-export default class Assets extends Component{
+export default class Alerts extends Component{
     constructor(){
         super();
         const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
@@ -17,7 +17,7 @@ export default class Assets extends Component{
     }
 
     fetchUsers(){
-        fetch('https://infinite-forest-19330.herokuapp.com/api/all')
+        fetch('https://capstone-notification-server.herokuapp.com/notifications/all')
             .then((response) => response.json())
             .then((response) => {
                 this.setState({
@@ -37,11 +37,8 @@ export default class Assets extends Component{
         return(
             <TouchableHighlight onPress={() => {this.onPress(user)}}>
             <View style={styles.row}>
-                <Text style={styles.rowText}>{user.name}</Text>
-                <Text style={styles.rowText}>{user.curator}</Text>
-                <Text style={styles.rowText}>{user.genre}</Text>
-                <Text style={styles.rowText}>{user.type}</Text>
-                <Text style={styles.rowText}>{user.id}</Text>
+                <Text style={styles.rowText}>{user.alertID}</Text>
+                <Text style={styles.rowText}>{user.description}</Text>
             </View>
             </TouchableHighlight>
         )
@@ -49,11 +46,11 @@ export default class Assets extends Component{
 
     render(){
         return(
-            <View>
+            // Header code goes under View
+            <View style={{flex:1, backgroundColor:'#ddd'}}>
                 <Header
-                    leftComponent={<MaterialIcons name="menu" size={30} color="#fff"/>}
-                    centerComponent={{ text:'BookMobile', style: { color:'#fff', fontSize:25, fontWeight:'bold'}}}
-                    rightComponent={<MaterialIcons name="home" size={30} color="#fff"/>}
+                centerComponent={{ text:'BookMobile', style: { color:'#87db59', fontSize:25, fontWeight:'bold'} }}
+                containerStyle={{ backgroundColor: '#8f968b'}}
                 />
                 <ListView 
                     dataSource={this.state.userDataSource}
@@ -77,4 +74,4 @@ const styles = StyleSheet.create({
     }
 });
 
-AppRegistry.registerComponent('Assets', () => Assets);
+AppRegistry.registerComponent('Alerts', () => Alerts);
