@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import {AppRegistry, Text, View, ListView, StyleSheet, TouchableHighlight} from 'react-native';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import { Header } from 'react-native-elements';
 
 export default class Alerts extends Component{
     constructor(){
@@ -15,7 +17,7 @@ export default class Alerts extends Component{
     }
 
     fetchUsers(){
-        fetch('https://infinite-forest-19330.herokuapp.com/api/all')
+        fetch('https://capstone-notification-server.herokuapp.com/notifications/all')
             .then((response) => response.json())
             .then((response) => {
                 this.setState({
@@ -35,11 +37,8 @@ export default class Alerts extends Component{
         return(
             <TouchableHighlight onPress={() => {this.onPress(user)}}>
             <View style={styles.row}>
-                <Text style={styles.rowText}>{user.name}</Text>
-                <Text style={styles.rowText}>{user.curator}</Text>
-                <Text style={styles.rowText}>{user.genre}</Text>
-                <Text style={styles.rowText}>{user.type}</Text>
-                <Text style={styles.rowText}>{user.id}</Text>
+                <Text style={styles.rowText}>{user.alertID}</Text>
+                <Text style={styles.rowText}>{user.description}</Text>
             </View>
             </TouchableHighlight>
         )
@@ -47,10 +46,17 @@ export default class Alerts extends Component{
 
     render(){
         return(
-        <ListView 
-            dataSource={this.state.userDataSource}
-            renderRow={this.renderRow.bind(this)}
-        />
+            // Header code goes under View
+            <View style={{flex:1, backgroundColor:'#ddd'}}>
+                <Header
+                centerComponent={{ text:'BookMobile', style: { color:'#87db59', fontSize:25, fontWeight:'bold'} }}
+                containerStyle={{ backgroundColor: '#8f968b'}}
+                />
+                <ListView 
+                    dataSource={this.state.userDataSource}
+                    renderRow={this.renderRow.bind(this)}
+                />
+            </View>
         );
     }
 }
@@ -68,4 +74,4 @@ const styles = StyleSheet.create({
     }
 });
 
-AppRegistry.registerComponent('Assets', () => Assets);
+AppRegistry.registerComponent('Alerts', () => Alerts);
