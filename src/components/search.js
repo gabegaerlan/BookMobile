@@ -29,8 +29,19 @@ export default class Search extends Component {
         });
     }
 
+    checkIfReserved(){
+
+    }
+
     GetListViewItem(name) {
-        Alert.alert(name);
+        Alert.alert(
+            name,
+            'This could show stock',
+            [
+                {text: 'Reserve', onPress: () => console.log('reserve pressed')},
+            ],
+            {cancelable: false},
+        );
     }
     SearchFilterFunction(text) {
 
