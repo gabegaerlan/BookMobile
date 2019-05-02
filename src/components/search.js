@@ -122,9 +122,10 @@ const styles = StyleSheet.create({
      },
    
      TextInputStyleClass:{
-           
+
       textAlign: 'center',
       height: 40,
+      marginTop:35,
       borderWidth: 1,
       borderColor: '#009688',
       borderRadius: 7 ,
