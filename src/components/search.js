@@ -28,11 +28,21 @@ export default class Search extends Component {
             console.error(error);
         });
     }
-
-    checkIfReserved(){
-
+    checkIfReserved(data){
+        if(data == true){
+            Alert.alert('Item is reserved');
+        }else{
+            Alert.alert(
+                'Item is not reserved',
+                'Would You Like To Reserve?',
+                [
+                    {text: 'Reserve', onPress: () => console.log('Reserved!')},
+                    
+                ],
+                {cancelable: false},
+            );
+        }
     }
-
     GetListViewItem(name) {
         Alert.alert(
             name,
@@ -89,7 +99,8 @@ export default class Search extends Component {
                     renderRow={(rowData) =>
                     <View style={{flex:1,flexDirection:'row'}}>
                         <Image source = {{uri: rowData.imageURL}} style={styles.imageViewContainer} />
-                        <Text style={styles.rowViewContainer} onPress={this.GetListViewItem.bind(this,rowData.name)}>
+                        <Text style={styles.rowViewContainer} 
+                        onPress={this.checkIfReserved.bind(this,rowData.reserved)}>
                         {rowData.name}{'\n'}
                         Curator:{rowData.curator}{'\n'}
                         Genre:{rowData.genre}{'\n'}
